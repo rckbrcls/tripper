@@ -1,18 +1,56 @@
-# tripper
+# Tripper
 
-## Overview
+> **Status:** Maintenance status to be confirmed
+> The repository appears to be an older iOS project; current maintenance and setup should be verified before relying on it.
 
-This project is a platform designed to help users create personalized routes for car or motorcycle trips, offering features like intelligent navigation, integration with reviews and recommendations, and a personalized travel experience. The system provides turn-by-turn navigation based on user preferences, real-time alerts, and the ability to save and share itineraries with others.
+Travel-planning app concept for creating personalized car and motorcycle trip routes with scenic stops, recommendations, navigation, alerts, and itinerary sharing.
 
-## Key Features
+## Summary
 
-- **Custom Trip Creation:** Users can create personalized routes by selecting destinations, points of interest, and stops along the way.
-- **Intelligent Navigation:** Provides turn-by-turn navigation with route options that consider scenic views, tourist attractions, and dining options.
-- **Integration with Reviews and Recommendations:** Users can view reviews and recommendations for tourist spots, restaurants, and services along their route.
-- **Personalized Experience:** Allows users to adjust route preferences, types of stops, travel time, and other options to suit their individual needs.
-- **Alerts and Notifications:** Real-time alerts about traffic conditions, events, and stop suggestions based on user interests.
-- **Trip Sharing:** Users can save and share their personalized trips with friends and family.
+- [What it is](#what-it-is)
+- [Goals](#goals)
+- [Product concept](#product-concept)
+- [Project map](#project-map)
+- [Current state](#current-state)
+- [Working notes](#working-notes)
 
-## Contribution
+## What it is
 
-Contributions are welcome! Please refer to the contribution guide for details on how to participate in the development of this project.
+Tripper is a mobile travel-planning concept focused on road trips. It combines route planning, tourism recommendations, review-style discovery, and navigation ideas for travelers who want a more intentional trip than a fastest-route map can provide.
+
+## Goals
+
+- Help users build personalized road-trip itineraries.
+- Recommend scenic views, tourist attractions, restaurants, and services along the route.
+- Support route preferences, alerts, saved trips, and sharing.
+- Explore a product space between navigation apps and travel-review platforms.
+
+## Product concept
+
+- Custom trip creation with destinations and stops.
+- Navigation guidance informed by user preferences.
+- Reviews and recommendations for places along the route.
+- Real-time traffic/event alerts and stop suggestions.
+- Saved and shareable itineraries.
+- Potential stakeholder value for travelers, tourism companies, hospitality, and local advertisers.
+
+## Project map
+
+```text
+tripper/
+├── REQUIREMENTS.MD # Long-form requirements, user stories, actors, use cases, and MVP notes
+├── tripper/        # iOS SwiftUI project, workspace, pods, and app source
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+└── LICENSE
+```
+
+## Current state
+
+The repository is mostly an early iOS project plus a detailed requirements document. The product definition is much more complete than the current implementation.
+
+## Working notes
+
+- Use `REQUIREMENTS.MD` as the main product reference.
+- Treat checked-in Pods as historical project state, not a pattern to repeat automatically.
+- Keep future implementation decisions grounded in the MVP and user stories.
