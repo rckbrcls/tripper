@@ -1,3 +1,28 @@
+# Tripper Product Requirements
+
+This document describes the intended product direction for Tripper. It includes product goals, requirements, user stories, actors, MVP ideas, and A/B testing notes.
+
+Important: this is not a guarantee of implemented behavior. The current repository contains an early SwiftUI iOS prototype. Several features described below are planned product requirements and are not yet implemented in the app.
+
+## Implementation Alignment
+
+| Product area | Current implementation | Status |
+| --- | --- | --- |
+| Custom trip creation | `tripper/tripper/Views/Explore/Templates/SearchTripView.swift` provides origin, destination, distance, and duration inputs. `tripper/tripper/Views/Trip/TripView.swift` uses mock `MapPoint` data and point-list interactions. | Partially prototyped |
+| Intelligent navigation | `tripper/tripper/MapView.swift` uses MapKit for current location markers, selected destination markers, route overlays, and Look Around previews. | Partially prototyped |
+| Route preferences | `tripper/tripper/Views/Explore/ExploreView.swift` includes filters for cost, route type, ratings, stops, travel preferences, and road conditions. | UI-only prototype |
+| Reviews and recommendations | Requirements describe reviews and recommendations, but no review data model, backend, API, or recommendation service was identified. | Not implemented |
+| Alerts and notifications | Requirements describe traffic alerts and stop suggestions, but no notification scheduling, push notification, or traffic alert implementation was identified. | Not implemented |
+| Trip sharing | Requirements describe sharing saved trips, but no sharing flow or generated trip links were identified. | Not implemented |
+| Saved trips | `tripper/tripper/Views/Saved/SavedRoutes.swift` renders repeated mock saved-route collections from bundled images. | Mock UI only |
+| Profile and settings | `tripper/tripper/Views/Profile/` contains profile, settings, appearance, account, password, address, notification, and report-error screens. | UI prototype |
+| Authentication | `tripper/tripper/Views/Credential/` contains login and signup UI. Login state is stored with `@AppStorage("isLoggedIn")`; Google and Facebook buttons are visual placeholders. | Placeholder only |
+| Local preferences | Theme selection is stored with `@AppStorage("selectedTheme")` and applied through `ColorSchemeManager` and `AppearanceView`. | Implemented locally |
+| Persistence | A default Core Data model exists, but no active persistence stack or trip storage flow was identified. | Not implemented |
+| Backend/API | No HTTP API client, backend service, server route, database connection, or external app service integration was identified. | Not implemented |
+
+The sections below preserve the broader product requirements and planning notes.
+
 ---
 ## Summary
 

@@ -1,52 +1,88 @@
-# Contribution Guide
+# Contributing to Tripper
 
-Thank you for considering contributing to this project! Your involvement helps make this project better for everyone. This guide outlines how you can get involved, whether you’re reporting a bug, proposing a new feature, or submitting a pull request.
+Tripper is a SwiftUI iOS app prototype. Contributions should keep the repository aligned with the current app structure, avoid generic scaffolding, and document the difference between implemented behavior and planned product scope.
 
-## How to Contribute
+## Project Entry Point
 
-### 1. Reporting Bugs
+Use the Xcode workspace:
 
-If you find a bug, please create an issue in the repository with the following details:
+```sh
+cd tripper
+open tripper.xcworkspace
+```
 
-- **Description:** A clear and concise description of what the bug is.
-- **Steps to Reproduce:** A list of steps to reproduce the bug.
-- **Expected Behavior:** What you expected to happen.
-- **Actual Behavior:** What actually happened.
-- **Screenshots:** If applicable, add screenshots to help explain your problem.
-- **Environment:** Specify the environment where the bug occurred (e.g., operating system, browser, etc.).
+Do not open `tripper.xcodeproj` directly for normal development. The project uses CocoaPods, and the workspace is the correct integration point for app, pod, and package dependencies.
 
-### 2. Proposing New Features
+## Development Guidelines
 
-If you have an idea for a new feature or an enhancement, please open an issue to discuss it with the maintainers. Include the following details:
+- Keep app strings, Swift comments, TODOs, examples, and documentation in English.
+- Keep Swift code in English.
+- Group SwiftUI work by the existing feature folders under `tripper/tripper/Views/`.
+- Prefer small, focused SwiftUI components when a screen starts mixing unrelated responsibilities.
+- Keep reusable visual modifiers in `tripper/tripper/Styles/`.
+- Keep shared services in `tripper/tripper/Services/` only when they represent app behavior, not screen-only state.
+- Do not add a backend, API layer, database layer, or authentication abstraction unless the implementation actually introduces those capabilities.
+- Do not document planned requirements as implemented features.
 
-- **Feature Description:** A clear and concise description of the feature or enhancement.
-- **Use Case:** Explain the problem the feature would solve or the benefit it would provide.
-- **Proposed Solution:** Describe how you envision the feature working.
+## Dependencies
 
-### 3. Submitting a Pull Request
+Tripper currently uses CocoaPods and Swift Package Manager:
 
-We welcome pull requests! If you’re ready to contribute, follow these steps:
+- CocoaPods dependencies are declared in `tripper/Podfile`.
+- Locked pod versions are stored in `tripper/Podfile.lock`.
+- SwiftPM resolution is stored in `tripper/tripper.xcworkspace/xcshareddata/swiftpm/Package.resolved`.
 
-1. **Fork the Repository:** Create a fork of the repository to work on your changes.
-2. **Create a Branch:** Create a new branch in your fork for your changes (e.g., `feature/new-feature` or `bugfix/fix-issue`).
-3. **Make Your Changes:** Write clear, concise, and well-documented code. Ensure your code follows the project's coding standards.
-4. **Test Your Changes:** If applicable, add tests to cover your changes and ensure all existing tests pass.
-5. **Commit Your Changes:** Use clear and descriptive commit messages. Follow the conventional commits standard if used in the project.
-6. **Push Your Changes:** Push your branch to your fork on GitHub.
-7. **Open a Pull Request:** Submit a pull request to the main repository. Include a description of your changes and reference any related issues.
+Rules for dependency changes:
 
-### 4. Code of Conduct
+- Do not edit files under `tripper/Pods/` manually.
+- Add or remove pods through `Podfile`, then regenerate the pod workspace with CocoaPods.
+- Keep dependency additions justified by current app needs.
+- Update `README.md` when setup or dependency expectations change.
 
-Please adhere to our [Code of Conduct](#) while participating in this project. We expect all contributors to maintain a respectful and collaborative environment.
+## Testing and Verification
 
-### 5. Review Process
+Use Xcode for verification:
 
-After you submit your pull request:
+- Build with `Product > Build`.
+- Run tests with `Product > Test`.
+- Use the shared `tripper` scheme.
 
-- **Review:** A project maintainer will review your code, provide feedback, and request changes if necessary.
-- **Discussion:** Be prepared to discuss your pull request and make additional commits as requested by reviewers.
-- **Merge:** Once your pull request is approved, it will be merged into the main branch.
+The current XCTest and XCUITest files are mostly generated placeholders. When adding real behavior, prefer tests around services, data transformations, and stable view logic instead of only launch tests.
 
-### 6. Getting Help
+Before submitting a change, check:
 
-If you need help with your contributions or have any questions, feel free to open an issue or contact the maintainers directly through the repository’s communication channels.
+- The app still opens from `tripper/tripper.xcworkspace`.
+- User-visible copy is in English.
+- Documentation matches the actual code.
+- No user-specific Xcode state is intentionally added.
+- No `.DS_Store` files are intentionally added or modified.
+- Generated or vendored files are only changed when the dependency workflow requires it.
+
+## Documentation Rules
+
+Update documentation when a change affects:
+
+- Implemented user flows.
+- Setup requirements.
+- Dependency management.
+- Test workflow.
+- Privacy, permissions, authentication, or persistence behavior.
+- The relationship between `REQUIREMENTS.md` and implemented app behavior.
+
+Keep documentation specific to Tripper. Avoid broad templates that could apply to any iOS app.
+
+## Pull Request Expectations
+
+A good pull request should include:
+
+- A clear description of what changed.
+- The user flow or source area affected.
+- Notes about verification performed.
+- Screenshots or screen recordings for visible UI changes when practical.
+- Documentation updates when behavior, setup, or scope changes.
+
+If a change implements a planned requirement, update the implementation-alignment section in `REQUIREMENTS.md`.
+
+## Code of Conduct
+
+Participation in this project is governed by [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
